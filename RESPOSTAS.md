@@ -16,15 +16,22 @@ O arquivo quebrado teria sido publicado direto no ar, sem nenhuma checagem. Os v
 
 ## 4. Na aba Actions, quantas execuções deram certo e quantas falharam?
 
-Ao todo tivemos 4 execuções do workflow "Publicar site":
+Considerando os passos do laboratório (Passos 1 a 3), tivemos 4 execuções do workflow "Publicar site":
 - ✅ 3 deram certo: commit inicial do template, Versão 1 e Versão 3 - corrigida.
 - ❌ 1 falhou: Versão 2 (arquivo incompleto).
 
+(Depois desses passos, novos commits — como este arquivo de respostas — também disparam o robô e geram novas execuções bem-sucedidas na aba Actions.)
+
 ## 5. O quadro cinza do site publicado: quem enviou, quando e qual o commit? Por que essa informação é útil numa empresa?
- 
+
 O quadro mostra quem enviou (usuário `jhowtk`), quando foi publicado (data e hora) e o hash curto do commit (ex.: `7d0492c`). Essa informação é útil numa empresa porque permite rastrear a origem de qualquer mudança em produção: se algo quebrar, dá para saber exatamente quem fez a alteração, quando ela foi feita e qual código exato (commit) está no ar. Isso facilita auditoria, rollback (voltar para uma versão anterior) e a responsabilização de cada mudança.
 
 ## 6. Cite um processo do dia a dia que poderia ter um "robô conferindo antes de liberar".
 
 Na faculdade: antes de aceitar a entrega de um trabalho de programação no portal, um "robô" poderia rodar os testes automaticamente e só liberar a nota/confirmação se o código compilar e passar nos testes, em vez de o professor descobrir manualmente que o código não funciona depois de já ter avaliado.
 
+## Desafio (opcional): lendo o publicar-site.yml
+
+- **Quando o robô começa a trabalhar:** no bloco `on:`, com `push: branches: [main]` (roda a cada envio na branch `main`) e também `workflow_dispatch:` (permite rodar manualmente pelo botão "Run workflow").
+- **Onde estão as 3 regras:** dentro do job `verificar` ("1 - Verificar arquivo"), nos steps "Regra 1 - O arquivo index.html existe?", "Regra 2 - O site tem título?" e "Regra 3 - O arquivo está completo?".
+- **A linha que só libera a publicação se a verificação passar:** no job `publicar` ("2 - Publicar site"), a linha `needs: verificar`.
