@@ -21,7 +21,7 @@ Ao todo tivemos 4 execuções do workflow "Publicar site":
 - ❌ 1 falhou: Versão 2 (arquivo incompleto).
 
 ## 5. O quadro cinza do site publicado: quem enviou, quando e qual o commit? Por que essa informação é útil numa empresa?
-
+ 
 O quadro mostra quem enviou (usuário `jhowtk`), quando foi publicado (data e hora) e o hash curto do commit (ex.: `7d0492c`). Essa informação é útil numa empresa porque permite rastrear a origem de qualquer mudança em produção: se algo quebrar, dá para saber exatamente quem fez a alteração, quando ela foi feita e qual código exato (commit) está no ar. Isso facilita auditoria, rollback (voltar para uma versão anterior) e a responsabilização de cada mudança.
 
 ## 6. Cite um processo do dia a dia que poderia ter um "robô conferindo antes de liberar".
